@@ -1,3 +1,7 @@
 from sqlite3 import connect
 
-con = connect("db_management.db")
+db_name = "db_management.db"
+
+
+def get_connection():
+    return connect(database=db_name)
