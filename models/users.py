@@ -1,5 +1,3 @@
-from db.queries import PermissionQueries
-
 class User:
     def __init__(self, id, full_name, phone_number, email, password, role, created_at):
         self.id = id
@@ -14,9 +12,11 @@ class User:
         return f"<User {self.id}: {self.full_name} ({self.role})>"
 
     def has_permission(self, permission_name):
+        from db.queries import PermissionQueries
         return PermissionQueries.has_permission(self.role, permission_name)
 
     def get_permissions(self):
+        from db.queries import PermissionQueries
         return PermissionQueries.get_user_permissions(self.role)
 
     def can_create_user(self):
